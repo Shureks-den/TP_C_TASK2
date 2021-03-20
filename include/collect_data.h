@@ -17,7 +17,6 @@ typedef struct worker {  // оптимизировал как черт 0 бай�
 } worker_t;
 
 
-
 worker_t* gather_info(const char source[], size_t* size);  // функция чтобы загрузить это чудо в память
 int print_info(worker_t* workers, size_t* size);  // печать общей инфы(для дебага)
 
