@@ -1,4 +1,1 @@
-[src/find_average_salary.c:42]: (warning) %u in format string (no. 2) requires 'unsigned int' but the argument type is 'signed short'.
-[src/utils.c:19]: (warning) fscanf() without field width limits can crash with huge input data.
-[src/utils.c:37]: (style) The function 'print_info' is never used.
 (information) Cppcheck cannot find all the include files (use --check-config for details)
