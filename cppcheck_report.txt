@@ -1,1 +1,2 @@
+[test/test_general.cpp:24]: (warning) Return value of function freopen() is not used.
 (information) Cppcheck cannot find all the include files (use --check-config for details)
