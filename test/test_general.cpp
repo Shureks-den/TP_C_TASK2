@@ -21,7 +21,7 @@ TEST(finding_average_salary, test_salary) {
         head = add_elem_to_main_structure(workers[i], head);
     }
 
-    freopen("got.txt", "w", stdout);
+    FILE* stream = freopen("got.txt", "w", stdout);
     find_average_salary(head);
     fclose(stdout);
 

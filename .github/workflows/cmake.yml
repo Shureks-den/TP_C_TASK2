@@ -41,5 +41,7 @@ jobs:
         
       - name: cppcheck
         uses: deep5050/cppcheck-action@master
+        with:
+          exclude_check: ./build
 
 
