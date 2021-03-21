@@ -1,2 +1,0 @@
-[test/test_general.cpp:24]: (style) Variable 'stream' is assigned a value that is never used.
-(information) Cppcheck cannot find all the include files (use --check-config for details)
