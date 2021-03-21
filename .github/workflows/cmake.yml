@@ -41,9 +41,15 @@ jobs:
       - name: cppcheck
         uses: deep5050/cppcheck-action@master
 
-      - name: code-coverage
-        shell: bash
+      - name: Upload coverage to Codecov
         working-directory: ${{runner.workspace}}
-        export: CODECOV_TOKEN = "58b3c8bc-8938-4630-ab0d-d0a6a7c313b2"
-        bash: <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./include/
+          files: ./src
+          flags: tests
+          name: codecov-umbrella
+          yml: ./codecov.yml
+          fail_ci_if_error: true
 
