@@ -1,0 +1,142 @@
+------------------------------------------------------------------
+For headmanager with 2 years of experience average salary is: 38000
+------------------------------------------------------------------
+For headmanager with 6 years of experience average salary is: 45000
+------------------------------------------------------------------
+For headmanager with 8 years of experience average salary is: 37500
+------------------------------------------------------------------
+For headmanager with 10 years of experience average salary is: 56000
+------------------------------------------------------------------
+For headmanager with 15 years of experience average salary is: 31000
+------------------------------------------------------------------
+For engineer with 2 years of experience average salary is: 77756
+------------------------------------------------------------------
+For engineer with 3 years of experience average salary is: 94865
+------------------------------------------------------------------
+For engineer with 5 years of experience average salary is: 69432
+------------------------------------------------------------------
+For engineer with 7 years of experience average salary is: 66144
+------------------------------------------------------------------
+For engineer with 8 years of experience average salary is: 91994
+------------------------------------------------------------------
+For engineer with 9 years of experience average salary is: 40000
+------------------------------------------------------------------
+For engineer with 10 years of experience average salary is: 44144
+------------------------------------------------------------------
+For engineer with 12 years of experience average salary is: 33000
+------------------------------------------------------------------
+For manager with 0 years of experience average salary is: 26313
+------------------------------------------------------------------
+For manager with 1 years of experience average salary is: 76682
+------------------------------------------------------------------
+For manager with 2 years of experience average salary is: 98001
+------------------------------------------------------------------
+For manager with 3 years of experience average salary is: 77480
+------------------------------------------------------------------
+For manager with 4 years of experience average salary is: 59629
+------------------------------------------------------------------
+For manager with 5 years of experience average salary is: 32500
+------------------------------------------------------------------
+For manager with 6 years of experience average salary is: 53738
+------------------------------------------------------------------
+For manager with 7 years of experience average salary is: 46000
+------------------------------------------------------------------
+For manager with 8 years of experience average salary is: 86847
+------------------------------------------------------------------
+For accountant with 2 years of experience average salary is: 63768
+------------------------------------------------------------------
+For accountant with 4 years of experience average salary is: 27808
+------------------------------------------------------------------
+For accountant with 5 years of experience average salary is: 24592
+------------------------------------------------------------------
+For accountant with 6 years of experience average salary is: 28788
+------------------------------------------------------------------
+For accountant with 7 years of experience average salary is: 39203
+------------------------------------------------------------------
+For accountant with 8 years of experience average salary is: 34099
+------------------------------------------------------------------
+For accountant with 9 years of experience average salary is: 41495
+------------------------------------------------------------------
+For accountant with 10 years of experience average salary is: 80165
+------------------------------------------------------------------
+For programmer with 0 years of experience average salary is: 85793
+------------------------------------------------------------------
+For programmer with 1 years of experience average salary is: 84360
+------------------------------------------------------------------
+For programmer with 4 years of experience average salary is: 70768
+------------------------------------------------------------------
+For programmer with 5 years of experience average salary is: 20389
+------------------------------------------------------------------
+For programmer with 6 years of experience average salary is: 81650
+------------------------------------------------------------------
+For programmer with 7 years of experience average salary is: 62948
+------------------------------------------------------------------
+For programmer with 8 years of experience average salary is: 41531
+------------------------------------------------------------------
+For programmer with 10 years of experience average salary is: 57278
+------------------------------------------------------------------
+For director with 0 years of experience average salary is: 94564
+------------------------------------------------------------------
+For director with 2 years of experience average salary is: 54231
+------------------------------------------------------------------
+For director with 4 years of experience average salary is: 60988
+------------------------------------------------------------------
+For director with 5 years of experience average salary is: 96716
+------------------------------------------------------------------
+For director with 7 years of experience average salary is: 57419
+------------------------------------------------------------------
+For director with 8 years of experience average salary is: 60452
+------------------------------------------------------------------
+For director with 9 years of experience average salary is: 22330
+------------------------------------------------------------------
+For director with 10 years of experience average salary is: 66063
+------------------------------------------------------------------
+For collector with 6 years of experience average salary is: 60718
+------------------------------------------------------------------
+For collector with 7 years of experience average salary is: 52508
+------------------------------------------------------------------
+For collector with 8 years of experience average salary is: 29323
+------------------------------------------------------------------
+For collector with 9 years of experience average salary is: 60054
+------------------------------------------------------------------
+For mechanic with 0 years of experience average salary is: 28624
+------------------------------------------------------------------
+For mechanic with 1 years of experience average salary is: 94770
+------------------------------------------------------------------
+For mechanic with 2 years of experience average salary is: 72404
+------------------------------------------------------------------
+For mechanic with 3 years of experience average salary is: 44717
+------------------------------------------------------------------
+For mechanic with 4 years of experience average salary is: 94871
+------------------------------------------------------------------
+For mechanic with 8 years of experience average salary is: 34369
+------------------------------------------------------------------
+For mechanic with 10 years of experience average salary is: 61506
+------------------------------------------------------------------
+For financier with 1 years of experience average salary is: 39327
+------------------------------------------------------------------
+For financier with 3 years of experience average salary is: 34654
+------------------------------------------------------------------
+For financier with 4 years of experience average salary is: 41345
+------------------------------------------------------------------
+For financier with 6 years of experience average salary is: 85425
+------------------------------------------------------------------
+For financier with 9 years of experience average salary is: 49462
+------------------------------------------------------------------
+For journalist with 0 years of experience average salary is: 78675
+------------------------------------------------------------------
+For journalist with 1 years of experience average salary is: 84161
+------------------------------------------------------------------
+For journalist with 2 years of experience average salary is: 88775
+------------------------------------------------------------------
+For journalist with 7 years of experience average salary is: 65621
+------------------------------------------------------------------
+For journalist with 8 years of experience average salary is: 34312
+------------------------------------------------------------------
+For journalist with 10 years of experience average salary is: 75078
+------------------------------------------------------------------
+For copywriter with 5 years of experience average salary is: 21060
+------------------------------------------------------------------
+For copywriter with 8 years of experience average salary is: 70875
+------------------------------------------------------------------
+For copywriter with 10 years of experience average salary is: 23575
