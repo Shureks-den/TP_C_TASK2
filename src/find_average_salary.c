@@ -40,6 +40,6 @@ int find_average_salary(main_list_t* head) {
 
 int print_average_salary(count_t* data) {
     return printf("------------------------------------------------------------------\n"
-    "For %s with %u years of experience average salary is: %u\n", 
+    "For %s with %hi years of experience average salary is: %u\n", 
     data->position, data->experience, data->sum_salary/data->num_of_workers);
 }

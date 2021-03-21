@@ -10,22 +10,27 @@ worker_t* gather_info(const char source[], size_t* size) {
         puts("Error openning the file");
         return NULL;
     }
+
     size_t i = *size;
+    size_t company_size = BIGCOMPANY;
+
     worker_t* workers = malloc(sizeof(worker_t) * BIGCOMPANY);
     if (workers == NULL) {
         fclose(database);
         return NULL;
     }
-    while (fscanf(database, "%s%s%s%hd%u%s%hd", workers[i].name, workers[i].surname, workers[i].gender, &workers[i].age, &workers[i].salary, workers[i].position, &workers[i].experience) > 0) {
+
+    while (fscanf(database, "%18s%19s%6s%hd%u%25s%hd", workers[i].name, workers[i].surname, workers[i].gender, &workers[i].age, &workers[i].salary, workers[i].position, &workers[i].experience) > 0) {
         i++;
 
-        if (i == BIGCOMPANY) {
+        if (i == company_size) {
             worker_t* tmp = realloc(workers, sizeof(worker_t) * (i + GROW));   // если сотрудников больше 10к
             if (tmp == NULL) {
                 free(workers);
                 fclose(database);
                 return NULL;
             }
+        company_size += GROW;
         workers = tmp;
         }
     }
