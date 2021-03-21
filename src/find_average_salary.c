@@ -2,7 +2,7 @@
 
 int find_average_salary(main_list_t* head) {
     if (head == NULL) {
-        return 1;
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
     }
     main_list_t* q = head;
     count_t* data_sort = NULL;
@@ -20,7 +20,9 @@ int find_average_salary(main_list_t* head) {
 
         while (p != NULL) {
             if (data_sort->experience != p->data.experience) {
-                print_average_salary(data_sort);
+                if (print_average_salary(data_sort) < 3) {
+                    return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+                }
                 data_sort->num_of_workers = 0;
                 data_sort->sum_salary = 0;
                 data_sort->experience = p->data.experience;
@@ -35,7 +37,7 @@ int find_average_salary(main_list_t* head) {
         
     }
     free(data_sort);
-    return 0;
+    return NO_ERROR;
 }
 
 int print_average_salary(count_t* data) {

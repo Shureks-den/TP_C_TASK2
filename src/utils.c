@@ -41,9 +41,11 @@ worker_t* gather_info(const char source[], size_t* size) {
 
 int print_info(worker_t* workers, size_t* size) {
     for(size_t i = 0; i < *size; i++) {
-        printf("Name : %s\nSurname : %s\nGender : %s\nAge : %hd\nSalary: %u\nPosition: %s\nWork Experience (years) : %hd\n\n", 
-        workers[i].name, workers[i].surname, workers[i].gender, workers[i].age, workers[i].salary, workers[i].position, workers[i].experience);
+        if (printf("Name : %s\nSurname : %s\nGender : %s\nAge : %hd\nSalary: %u\nPosition: %s\nWork Experience (years) : %hd\n\n", 
+        workers[i].name, workers[i].surname, workers[i].gender, workers[i].age, workers[i].salary, workers[i].position, workers[i].experience) < 6) {
+            return CANNOT_PRINT_INFO_FROM_ARRAY;
+        }
     }
-    return 0;
+    return NO_ERROR;
 }
 

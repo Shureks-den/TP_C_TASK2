@@ -6,35 +6,44 @@
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         puts("Too few arguments");
-        return -1;
+        return TOO_FEW_ARGUMENTS;
     }
+
     worker_t* workers;
     size_t size = 0;
     workers = gather_info(argv[1], &size);
-    //print_info(workers, &size);
+
     if (workers == NULL) {
-        return -1;
+        return CANNOT_GET_INFO_FROM_FILE;
     }
+
     main_list_t * head = NULL;
     head = initialise_main_list(workers[0]);
     if (head == NULL) {
-        return -1;
+        return CANNOT_BUILD_LIST_STRUCTURE;
     }
     for(size_t i = 1; i < size; i++) {
         head = add_elem_to_main_structure(workers[i], head);
     }
+
     if (head == NULL) {
-        return -1;
+        return ADDING_ERROR;
+    }
+
+    if (print_info(workers, &size)) {
+        return CANNOT_PRINT_INFO_FROM_ARRAY;
     }
     if (print_position_structure(head)) {
-        return -1;
+        return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
     }
+
     if (find_average_salary(head)) {
-        return -1;
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
     }
     if (clear_position_structure(head)) {
-        return -1;
+        return ERROR_IN_DELETING_LIST_STRUCTURE;
     }
+
     free(workers);  // по логике она наверно в памяти должна оставаться
-    return 0;
+    return NO_ERROR;
 }

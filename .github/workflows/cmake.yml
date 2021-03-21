@@ -40,3 +40,10 @@ jobs:
         run: cmake --build . --config $BUILD_TYPE
       - name: cppcheck
         uses: deep5050/cppcheck-action@master
+
+      - name: code-coverage
+        shell: bash
+        working-directory: ${{runner.workspace}}
+        export: CODECOV_TOKEN = "58b3c8bc-8938-4630-ab0d-d0a6a7c313b2"
+        bash: <(curl -s https://codecov.io/bash)
+

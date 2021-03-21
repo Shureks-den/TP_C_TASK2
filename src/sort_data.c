@@ -93,7 +93,7 @@ position_list_t* copy_data(position_list_t* pre_current, position_list_t* curren
 
 int clear_position_structure(main_list_t* head) {
     if (head == NULL) {
-        return 0;
+        return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
     }
     main_list_t* clean_struct = head;
 
@@ -109,7 +109,7 @@ int clear_position_structure(main_list_t* head) {
         free(clean_struct);
         clean_struct = head;
     }
-    return 0;
+    return NO_ERROR;
 }
 
 
