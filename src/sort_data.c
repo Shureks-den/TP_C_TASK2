@@ -40,6 +40,8 @@ main_list_t* initialise_main_list(worker_t element) {
     current->head->data.experience = element.experience;
     current->head->data.salary = element.salary;
     if (snprintf(current->head->data.position,  sizeof(element.position), "%s", element.position) < 0) {
+        free(current->head);
+        free(current);
         return NULL;
     }
 
@@ -82,6 +84,7 @@ position_list_t* copy_data(position_list_t* pre_current, position_list_t* curren
     new_elem->data.experience = element.experience;
     new_elem->data.salary = element.salary;
     if (snprintf(new_elem->data.position, sizeof(element.position), "%s", element.position) < 0) {
+        free(new_elem);
         return NULL;
     }
 
@@ -89,6 +92,9 @@ position_list_t* copy_data(position_list_t* pre_current, position_list_t* curren
 }
 
 int clear_position_structure(main_list_t* head) {
+    if (head == NULL) {
+        return 0;
+    }
     main_list_t* clean_struct = head;
 
     while (head != NULL) {

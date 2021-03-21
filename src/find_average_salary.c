@@ -14,7 +14,7 @@ int find_average_salary(main_list_t* head) {
         data_sort->experience = p->data.experience;
         data_sort->sum_salary = 0;
         data_sort->num_of_workers = 0;
-        if (snprintf(data_sort->position, sizeof(p->data.position), "%s", p->data.position) < 1) {
+        if (snprintf(data_sort->position, sizeof(data_sort->position), "%s", p->data.position) < 1) {
             return -1;
         }
 
@@ -39,6 +39,7 @@ int find_average_salary(main_list_t* head) {
 }
 
 int print_average_salary(count_t* data) {
-    return printf("---------------\nFor %s with %u years of experience average salary is: %u\n", 
+    return printf("------------------------------------------------------------------\n"
+    "For %s with %u years of experience average salary is: %u\n", 
     data->position, data->experience, data->sum_salary/data->num_of_workers);
 }

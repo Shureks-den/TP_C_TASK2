@@ -1,5 +1,5 @@
 #pragma once
-#include "collect_data.h"
+#include "utils.h"
 
 typedef struct data {
     char position[26];
