@@ -1,3 +1,4 @@
+#pragma once
 #include "sort_data.h"
 
 

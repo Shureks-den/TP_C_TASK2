@@ -115,7 +115,7 @@ int clear_position_structure(main_list_t* head) {
 
 int print_position_structure(main_list_t* head) {
     if (head == NULL) {
-        return 1;
+        return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
     }
     main_list_t* q = head;
     printf("----------------------\n");
@@ -123,14 +123,14 @@ int print_position_structure(main_list_t* head) {
         position_list_t* p = q->head;
         while (p != NULL) {
             if (print_data(*p) < 0) {
-                return 1;
+                return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
             }
             p = p->next;
         }
         q = q->next_list;
         printf("----------------------\n");
     }
-    return 0;
+    return NO_ERROR;
 }
 
 int print_data(position_list_t get_data) {
