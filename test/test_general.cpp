@@ -22,6 +22,7 @@ TEST(finding_average_salary, test_salary) {
     }
 
     FILE* stream = freopen("got.txt", "w", stdout);
+    ASSERT_NE(stream, nullptr);
     find_average_salary(head);
     fclose(stdout);
 

@@ -43,5 +43,6 @@ jobs:
         uses: deep5050/cppcheck-action@master
         with:
           exclude_check: ./build
+          enable : warning,style ,performance,portability,unusedFunction,missingInclude
 
 
