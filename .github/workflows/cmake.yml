@@ -64,9 +64,6 @@ jobs:
         shell: bash
         run: valgrind ctest
 
-      - name: Upload coverage to Codecov
-        with:
-          fail_ci_if_error: true
 
 
 
