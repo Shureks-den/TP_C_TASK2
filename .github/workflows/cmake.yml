@@ -48,9 +48,6 @@ jobs:
           exclude_check: ./build
           enable : warning,style ,performance,portability,unusedFunction,missingInclude
           inconclusive : disable
-          
-  test:
-    steps:
 
       - name: Test
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
