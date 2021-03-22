@@ -24,17 +24,17 @@ jobs:
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: mkdir build
 
+      - name: check content
+        working-directory: ${{runner.workspace}}
+        shell: bash
+        run: ls
+
       - name: Build cmake
         working-directory: ${{runner.workspace}}/build
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: cmake ..
 
-
-      - name: check content
-        working-directory: ${{runner.workspace}}
-        shell: bash
-        run: ls
 
       - name: Build make
         working-directory: ${{runner.workspace}}/build
