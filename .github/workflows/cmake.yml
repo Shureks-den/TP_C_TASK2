@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: codecov/codecov-action@v1
       - uses: actions/checkout@v2
 
       - name: Create WD
@@ -64,6 +63,11 @@ jobs:
         shell: bash
         run: valgrind ctest
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+            fail_ci_if_error: true
 
 
 
