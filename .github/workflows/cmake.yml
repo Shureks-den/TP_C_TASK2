@@ -30,6 +30,12 @@ jobs:
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: cmake ..
 
+
+      - name: check content
+        working-directory: ${{runner.workspace}}
+        shell: bash
+        run: ls
+
       - name: Build make
         working-directory: ${{runner.workspace}}/build
         shell: bash
@@ -42,11 +48,6 @@ jobs:
           exclude_check: ./build
           enable : warning,style ,performance,portability,unusedFunction,missingInclude
           inconclusive : disable
-      
-      - name: check content
-        working-directory: ${{runner.workspace}}
-        shell: bash
-        run: ls
 
       - name: Test
         working-directory: ${{runner.workspace}}/build
