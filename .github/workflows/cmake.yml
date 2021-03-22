@@ -12,7 +12,7 @@ jobs:
     # well on Windows or Mac.  You can convert this to a matrix build if you need
     # cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    name: cppcheck
+    name: build
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,7 @@ jobs:
         run: mkdir build
 
       - name: check content
-        working-directory: ${{runner.workspace}}
+        working-directory: ${{runner.workspace}}/TP_C_TASK2
         shell: bash
         run: ls
 
@@ -41,6 +41,10 @@ jobs:
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: make
+
+    name: cppcheck
+    
+    steps:
         
       - name: cppcheck
         uses: deep5050/cppcheck-action@master
@@ -49,11 +53,20 @@ jobs:
           enable : warning,style ,performance,portability,unusedFunction,missingInclude
           inconclusive : disable
 
+    name: Tests
+    steps:
+
       - name: Test
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
         run: ctest
 
+    name: MemoryLeaks
+    steps:
+      - name: Install valgrind
+        shell: bash
+        run: sudo apt install -y valgrind
+        
       - name: Memoryleaks
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
