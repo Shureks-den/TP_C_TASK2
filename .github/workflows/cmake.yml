@@ -19,19 +19,19 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create WD
-        working-directory: ${{runner.workspace}}/TP_C_TASK2
+        working-directory: ${{runner.workspace}}
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: mkdir build
 
       - name: Build cmake
-        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
+        working-directory: ${{runner.workspace}}/build
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: cmake .. . --build . --config $BUILD_TYPE
+        run: cmake .. . --build
 
       - name: Build make
-        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
+        working-directory: ${{runner.workspace}}/build
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: make
@@ -44,12 +44,12 @@ jobs:
           inconclusive : disable
       
       - name: check content
-        working-directory: ${{runner.workspace}}TP_C_TASK2
+        working-directory: ${{runner.workspace}}
         shell: bash
         run: ls
 
       - name: Test
-        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
+        working-directory: ${{runner.workspace}}/build
         shell: bash
         run: ctest
 
