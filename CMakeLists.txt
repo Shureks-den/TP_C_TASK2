@@ -19,7 +19,9 @@ enable_testing()
 add_subdirectory(test)
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
-file(GLOB sources
-  "${PROJECT_SOURCE_DIR}/include/*.h"
-  "${PROJECT_SOURCE_DIR}/src/*.c")
-add_executable(prog ${sources})
+
+add_library(Static_onethreaded STATIC ${PROJECT_SOURCE_DIR}/src/find_average_salary.c 
+${PROJECT_SOURCE_DIR}/src/sort_data.c ${PROJECT_SOURCE_DIR}/src/utils.c)
+
+add_executable(prog ${PROJECT_SOURCE_DIR}/src/main.c)
+target_link_libraries(prog Static_onethreaded)
