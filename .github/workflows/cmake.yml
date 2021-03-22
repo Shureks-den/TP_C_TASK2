@@ -28,14 +28,20 @@ jobs:
         # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
         run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
-      - name: Build cmake
-        working-directory: ${{runner.workspace}}/build
+      - name: Create WD
+        working-directory: ${{runner.workspace}}/TP_C_TASK2
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: cmake --build . --config $BUILD_TYPE
+        run: mkdir build
+
+      - name: Build cmake
+        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
+        shell: bash
+        # Execute the build.  You can specify a specific target with "--target <NAME>"
+        run: cmake .. . --build . --config $BUILD_TYPE
 
       - name: Build make
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: make
@@ -48,17 +54,17 @@ jobs:
           inconclusive : disable
       
       - name: check content
-        working-directory: ${{runner.workspace}}
+        working-directory: ${{runner.workspace}}TP_C_TASK2
         shell: bash
         run: ls
 
       - name: Test
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
         run: ctest
 
       - name: Memoryleaks
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
         run: valgrind ctest
 
