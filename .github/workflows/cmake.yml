@@ -41,7 +41,8 @@ jobs:
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: make
-
+        
+  cppcheck:
     name: cppcheck
     
     steps:
@@ -52,7 +53,7 @@ jobs:
           exclude_check: ./build
           enable : warning,style ,performance,portability,unusedFunction,missingInclude
           inconclusive : disable
-
+  Test:
     name: Tests
     steps:
 
@@ -61,12 +62,13 @@ jobs:
         shell: bash
         run: ctest
 
+  Memoryleak:
     name: MemoryLeaks
     steps:
       - name: Install valgrind
         shell: bash
         run: sudo apt install -y valgrind
-        
+
       - name: Memoryleaks
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
