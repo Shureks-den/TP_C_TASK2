@@ -23,6 +23,7 @@ TEST(finding_average_salary, test_salary) {
     ASSERT_EQ(find_average_salary(head), NO_ERROR);
 
     count_t* data_sort = NULL;
+    ASSERT_EQ(print_average_salary(data_sort), CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE);
     data_sort = (count_t*)malloc(sizeof(data_t));
     data_sort->experience = 2;
     data_sort->num_of_workers = 3;
@@ -33,4 +34,6 @@ TEST(finding_average_salary, test_salary) {
     clear_position_structure(head);
     head = NULL;
     ASSERT_EQ(find_average_salary(head), ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL);
+
+    free(workers);
 }

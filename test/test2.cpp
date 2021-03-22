@@ -45,4 +45,6 @@ TEST(forming_a_structure, making_a_list) {
     head = add_elem_to_main_structure(workers[0], head);
     ASSERT_EQ(head, nullptr);
     ASSERT_NE(print_position_structure(head), NO_ERROR);
+    
+    free(workers);
 }

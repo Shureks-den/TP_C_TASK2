@@ -26,6 +26,7 @@ enum error_list {
     CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE = 6,
     ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL = 7,
     ERROR_IN_DELETING_LIST_STRUCTURE = 8,
+    SNPRINTF_ERROR = 9,
 };
 
 worker_t* gather_info(const char source[], size_t* size);  // функция чтобы загрузить это чудо в память

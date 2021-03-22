@@ -35,6 +35,7 @@ TEST(utils_functions_test, test_reading_from_file) {  // проверка чте
 
     ASSERT_NE(workers, nullptr);
     ASSERT_EQ(size, i);
+    free(workers);
 }
 
 TEST(utils_functions_test, printing_all_info) {  // проверка печати информации
@@ -43,4 +44,7 @@ TEST(utils_functions_test, printing_all_info) {  // проверка печат�
     char filename[] = "../workers.txt";
     workers = gather_info(filename, &size);
     ASSERT_EQ(print_info(workers, &size), NO_ERROR);
+    free(workers);
+    workers = NULL;
+    ASSERT_EQ(print_info(workers, &size), CANNOT_PRINT_INFO_FROM_ARRAY);
 }

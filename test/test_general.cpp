@@ -47,4 +47,5 @@ TEST(finding_average_salary, test_salary) {
     ASSERT_STREQ(got.c_str(), expected.c_str());
 
     clear_position_structure(head);
+    free(workers);
 }
