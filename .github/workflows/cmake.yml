@@ -42,19 +42,14 @@ jobs:
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: make
         
-  cppcheck:
-    name: cppcheck
-    
-    steps:
-        
       - name: cppcheck
         uses: deep5050/cppcheck-action@master
         with:
           exclude_check: ./build
           enable : warning,style ,performance,portability,unusedFunction,missingInclude
           inconclusive : disable
-  Test:
-    name: Tests
+          
+  test:
     steps:
 
       - name: Test
@@ -62,9 +57,6 @@ jobs:
         shell: bash
         run: ctest
 
-  Memoryleak:
-    name: MemoryLeaks
-    steps:
       - name: Install valgrind
         shell: bash
         run: sudo apt install -y valgrind
