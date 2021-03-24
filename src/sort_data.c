@@ -2,7 +2,7 @@
 
 main_list_t* add_elem_to_main_structure(worker_t element, main_list_t* head) {
     if (head == NULL) {
-        return NULL;
+        head = initialise_main_list(element);
     }
     main_list_t* current = head;
     main_list_t* pre_current = head;

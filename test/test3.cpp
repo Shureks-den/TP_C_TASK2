@@ -10,7 +10,7 @@ extern "C" {
 TEST(finding_average_salary, test_salary) {
     worker_t* workers = NULL;
     size_t size = 0;
-    char filename[] = "../workers.txt";
+    char filename[] = "../workers_BIG.txt";
     workers = gather_info(filename, &size);
     
     main_list_t* head = NULL;

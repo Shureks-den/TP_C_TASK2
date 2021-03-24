@@ -5,6 +5,30 @@
 #define BIGCOMPANY 10000  // ориентировочная цифра
 #define GROW 1000  // коэффициент для realloc
 
+typedef struct count {
+    unsigned int sum_salary;
+    short num_of_workers;
+    short experience;
+    char position[24];
+} count_t;
+
+typedef struct data {
+    char position[26];
+    short experience;
+    unsigned int salary;
+} data_t;
+
+typedef struct position_list position_list_t;
+struct position_list {
+    data_t data;
+    position_list_t* next;
+};
+
+typedef struct main_list main_list_t;
+struct main_list {
+    position_list_t* head;
+    main_list_t* next_list;
+};
 
 typedef struct worker {
     char name[19];

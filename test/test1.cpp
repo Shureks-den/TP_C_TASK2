@@ -9,7 +9,7 @@ extern "C" {
 TEST(utils_functions_test, test_reading_from_file) {  // проверка чтения файлов, в том числе не сушествующих
     worker_t* workers;
     size_t size = 0;
-    char filename[] = "../workers.txt";  // директория внутри билда
+    char filename[] = "../workers_BIG.txt";  // директория внутри билда
     workers = gather_info(filename, &size);
     ASSERT_NE(workers, nullptr);
     free(workers);

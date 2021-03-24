@@ -9,7 +9,7 @@ extern "C" {
 TEST(forming_a_structure, making_a_list) {
     worker_t* workers = NULL;
     size_t size = 0;
-    char filename[] = "../workers.txt";
+    char filename[] = "../workers_BIG.txt";
     workers = gather_info(filename, &size);
     
     main_list_t* head = NULL;
@@ -43,8 +43,8 @@ TEST(forming_a_structure, making_a_list) {
     ASSERT_EQ(clear_position_structure(head), NO_ERROR);
     head = NULL;
     head = add_elem_to_main_structure(workers[0], head);
-    ASSERT_EQ(head, nullptr);
-    ASSERT_NE(print_position_structure(head), NO_ERROR);
+    ASSERT_NE(head, nullptr);
+    ASSERT_EQ(print_position_structure(head), NO_ERROR);
     
     free(workers);
 }
