@@ -23,7 +23,7 @@ include_directories("${PROJECT_SOURCE_DIR}/include")
 add_library(Static_onethreaded STATIC ${PROJECT_SOURCE_DIR}/src/find_average_salary.c 
 ${PROJECT_SOURCE_DIR}/src/sort_data.c ${PROJECT_SOURCE_DIR}/src/utils.c)
 
-add_library(multi_thread SHARED ${PROJECT_SOURCE_DIR}/src/sort_data_thread.c)
+#add_library(multi_thread SHARED ${PROJECT_SOURCE_DIR}/src/sort_data_thread.c)
 
 add_executable(prog ${PROJECT_SOURCE_DIR}/src/main.c)
-target_link_libraries(prog Static_onethreaded multi_thread)
+target_link_libraries(prog Static_onethreaded)
