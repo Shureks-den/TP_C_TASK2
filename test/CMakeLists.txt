@@ -11,6 +11,6 @@ foreach(file ${tests})
   add_executable("${name}_tests"
     ${file}
     "${PROJECT_SOURCE_DIR}/test/main.cpp")
-  target_link_libraries("${name}_tests" gtest_main Static_onethreaded)
+  target_link_libraries("${name}_tests" gtest_main Static_onethreaded multi_thread)
   add_test(NAME ${name} COMMAND "${name}_tests")
 endforeach()

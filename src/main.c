@@ -1,6 +1,8 @@
 #include "../include/utils.h"
 #include "../include/sort_data.h"
 #include "../include/find_average_salary.h"
+#include "../include/find_average_salary_par.h"
+
 #include <stdlib.h>
 
 int main(int argc, char* argv[]) {
@@ -18,32 +20,16 @@ int main(int argc, char* argv[]) {
     }
 
     main_list_t * head = NULL;
-    head = initialise_main_list(workers[0]);
-    if (head == NULL) {
-        return CANNOT_BUILD_LIST_STRUCTURE;
-    }
-    for(size_t i = 1; i < size; i++) {
+
+    for(size_t i = 0; i < size; i++) {
         head = add_elem_to_main_structure(workers[i], head);
     }
+    if (strcmp(argv[2], "1") == 0)
+    find_average_salary_parallel(head);
+    if (strcmp(argv[2], "2") == 0)
+    find_average_salary(head); 
 
-    if (head == NULL) {
-        return ADDING_ERROR;
-    }
-
-    if (print_info(workers, &size)) {
-        return CANNOT_PRINT_INFO_FROM_ARRAY;
-    }
-    if (print_position_structure(head)) {
-        return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
-    }
-
-    if (find_average_salary(head)) {
-        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
-    }
-    if (clear_position_structure(head)) {
-        return ERROR_IN_DELETING_LIST_STRUCTURE;
-    }
-
+    clear_position_structure(head);
     free(workers);  // по логике она наверно в памяти должна оставаться
     return NO_ERROR;
 }

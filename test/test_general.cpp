@@ -15,9 +15,8 @@ TEST(finding_average_salary, test_salary) {
     workers = gather_info(filename, &size);
     
     main_list_t* head = NULL;
-    head = initialise_main_list(workers[0]);
-   
-    for(size_t i = 1; i < size; ++i) {
+    
+    for(size_t i = 0; i < size; ++i) {
         head = add_elem_to_main_structure(workers[i], head);
     }
 

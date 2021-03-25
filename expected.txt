@@ -3,7 +3,7 @@ For headmanager with 2 years of experience average salary is: 38000
 ------------------------------------------------------------------
 For headmanager with 6 years of experience average salary is: 45000
 ------------------------------------------------------------------
-For headmanager with 8 years of experience average salary is: 37500
+For headmanager with 8 years of experience average salary is: 40000
 ------------------------------------------------------------------
 For headmanager with 10 years of experience average salary is: 56000
 ------------------------------------------------------------------
@@ -230,3 +230,187 @@ For copywriter with 8 years of experience average salary is: 57310
 For copywriter with 9 years of experience average salary is: 65921
 ------------------------------------------------------------------
 For copywriter with 10 years of experience average salary is: 61360
+------------------------------------------------------------------
+For DJ with 0 years of experience average salary is: 87100
+------------------------------------------------------------------
+For DJ with 2 years of experience average salary is: 21792
+------------------------------------------------------------------
+For DJ with 3 years of experience average salary is: 42013
+------------------------------------------------------------------
+For DJ with 4 years of experience average salary is: 78794
+------------------------------------------------------------------
+For DJ with 5 years of experience average salary is: 34417
+------------------------------------------------------------------
+For DJ with 6 years of experience average salary is: 74475
+------------------------------------------------------------------
+For DJ with 7 years of experience average salary is: 53270
+------------------------------------------------------------------
+For DJ with 8 years of experience average salary is: 50692
+------------------------------------------------------------------
+For DJ with 9 years of experience average salary is: 55283
+------------------------------------------------------------------
+For DJ with 10 years of experience average salary is: 39204
+------------------------------------------------------------------
+For guard with 0 years of experience average salary is: 72432
+------------------------------------------------------------------
+For guard with 1 years of experience average salary is: 54110
+------------------------------------------------------------------
+For guard with 2 years of experience average salary is: 27977
+------------------------------------------------------------------
+For guard with 3 years of experience average salary is: 45246
+------------------------------------------------------------------
+For guard with 4 years of experience average salary is: 57670
+------------------------------------------------------------------
+For guard with 5 years of experience average salary is: 78354
+------------------------------------------------------------------
+For guard with 6 years of experience average salary is: 63085
+------------------------------------------------------------------
+For guard with 7 years of experience average salary is: 40091
+------------------------------------------------------------------
+For guard with 8 years of experience average salary is: 51531
+------------------------------------------------------------------
+For guard with 9 years of experience average salary is: 64768
+------------------------------------------------------------------
+For guard with 10 years of experience average salary is: 76820
+------------------------------------------------------------------
+For game-desinger with 0 years of experience average salary is: 54836
+------------------------------------------------------------------
+For game-desinger with 1 years of experience average salary is: 60190
+------------------------------------------------------------------
+For game-desinger with 2 years of experience average salary is: 99783
+------------------------------------------------------------------
+For game-desinger with 3 years of experience average salary is: 61831
+------------------------------------------------------------------
+For game-desinger with 4 years of experience average salary is: 43716
+------------------------------------------------------------------
+For game-desinger with 5 years of experience average salary is: 52741
+------------------------------------------------------------------
+For game-desinger with 6 years of experience average salary is: 68659
+------------------------------------------------------------------
+For game-desinger with 7 years of experience average salary is: 49829
+------------------------------------------------------------------
+For game-desinger with 8 years of experience average salary is: 54323
+------------------------------------------------------------------
+For game-desinger with 9 years of experience average salary is: 67740
+------------------------------------------------------------------
+For game-desinger with 10 years of experience average salary is: 58313
+------------------------------------------------------------------
+For helpdesk with 0 years of experience average salary is: 46349
+------------------------------------------------------------------
+For helpdesk with 1 years of experience average salary is: 56701
+------------------------------------------------------------------
+For helpdesk with 2 years of experience average salary is: 75508
+------------------------------------------------------------------
+For helpdesk with 3 years of experience average salary is: 53749
+------------------------------------------------------------------
+For helpdesk with 4 years of experience average salary is: 60679
+------------------------------------------------------------------
+For helpdesk with 5 years of experience average salary is: 58884
+------------------------------------------------------------------
+For helpdesk with 6 years of experience average salary is: 91905
+------------------------------------------------------------------
+For helpdesk with 7 years of experience average salary is: 46877
+------------------------------------------------------------------
+For helpdesk with 8 years of experience average salary is: 51024
+------------------------------------------------------------------
+For helpdesk with 9 years of experience average salary is: 63069
+------------------------------------------------------------------
+For helpdesk with 10 years of experience average salary is: 74896
+------------------------------------------------------------------
+For secretary with 0 years of experience average salary is: 62824
+------------------------------------------------------------------
+For secretary with 1 years of experience average salary is: 78517
+------------------------------------------------------------------
+For secretary with 2 years of experience average salary is: 42343
+------------------------------------------------------------------
+For secretary with 3 years of experience average salary is: 45411
+------------------------------------------------------------------
+For secretary with 4 years of experience average salary is: 74826
+------------------------------------------------------------------
+For secretary with 5 years of experience average salary is: 63700
+------------------------------------------------------------------
+For secretary with 6 years of experience average salary is: 61840
+------------------------------------------------------------------
+For secretary with 7 years of experience average salary is: 68394
+------------------------------------------------------------------
+For secretary with 8 years of experience average salary is: 58189
+------------------------------------------------------------------
+For secretary with 9 years of experience average salary is: 57021
+------------------------------------------------------------------
+For secretary with 10 years of experience average salary is: 54301
+------------------------------------------------------------------
+For janitor with 0 years of experience average salary is: 56817
+------------------------------------------------------------------
+For janitor with 1 years of experience average salary is: 40760
+------------------------------------------------------------------
+For janitor with 2 years of experience average salary is: 44554
+------------------------------------------------------------------
+For janitor with 3 years of experience average salary is: 67338
+------------------------------------------------------------------
+For janitor with 4 years of experience average salary is: 62034
+------------------------------------------------------------------
+For janitor with 5 years of experience average salary is: 83566
+------------------------------------------------------------------
+For janitor with 6 years of experience average salary is: 54899
+------------------------------------------------------------------
+For janitor with 7 years of experience average salary is: 61888
+------------------------------------------------------------------
+For janitor with 8 years of experience average salary is: 39161
+------------------------------------------------------------------
+For janitor with 9 years of experience average salary is: 67086
+------------------------------------------------------------------
+For kremlin-bot with 0 years of experience average salary is: 45271
+------------------------------------------------------------------
+For kremlin-bot with 1 years of experience average salary is: 33277
+------------------------------------------------------------------
+For kremlin-bot with 2 years of experience average salary is: 71317
+------------------------------------------------------------------
+For kremlin-bot with 4 years of experience average salary is: 66751
+------------------------------------------------------------------
+For kremlin-bot with 5 years of experience average salary is: 67820
+------------------------------------------------------------------
+For kremlin-bot with 6 years of experience average salary is: 31976
+------------------------------------------------------------------
+For kremlin-bot with 7 years of experience average salary is: 70849
+------------------------------------------------------------------
+For kremlin-bot with 8 years of experience average salary is: 82292
+------------------------------------------------------------------
+For kremlin-bot with 9 years of experience average salary is: 58369
+------------------------------------------------------------------
+For desinger with 0 years of experience average salary is: 35921
+------------------------------------------------------------------
+For desinger with 4 years of experience average salary is: 56686
+------------------------------------------------------------------
+For desinger with 6 years of experience average salary is: 90858
+------------------------------------------------------------------
+For desinger with 7 years of experience average salary is: 69333
+------------------------------------------------------------------
+For desinger with 8 years of experience average salary is: 72890
+------------------------------------------------------------------
+For desinger with 9 years of experience average salary is: 69873
+------------------------------------------------------------------
+For desinger with 10 years of experience average salary is: 28765
+------------------------------------------------------------------
+For HR with 1 years of experience average salary is: 23567
+------------------------------------------------------------------
+For HR with 2 years of experience average salary is: 38413
+------------------------------------------------------------------
+For HR with 3 years of experience average salary is: 23333
+------------------------------------------------------------------
+For HR with 4 years of experience average salary is: 75483
+------------------------------------------------------------------
+For HR with 5 years of experience average salary is: 54231
+------------------------------------------------------------------
+For HR with 6 years of experience average salary is: 70563
+------------------------------------------------------------------
+For HR with 7 years of experience average salary is: 104728
+------------------------------------------------------------------
+For HR with 10 years of experience average salary is: 125000
+------------------------------------------------------------------
+For data-scientist with 1 years of experience average salary is: 95000
+------------------------------------------------------------------
+For data-scientist with 2 years of experience average salary is: 32135
+------------------------------------------------------------------
+For data-scientist with 4 years of experience average salary is: 95000
+------------------------------------------------------------------
+For data-scientist with 10 years of experience average salary is: 95000
