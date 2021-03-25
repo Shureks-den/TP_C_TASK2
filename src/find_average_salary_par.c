@@ -93,7 +93,7 @@ int count_nodes(main_list_t* head) {
 }
 
 int print_average_salary(count_t* data) {
-    if (unlikely(data == NULL)) {
+    if (data == NULL) {
         return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
     }
     return printf("------------------------------------------------------------------\n"
