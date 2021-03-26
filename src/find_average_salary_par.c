@@ -4,18 +4,24 @@
 #define likely(expr) __builtin_expect(!!(expr), 1)
 
 void* thread_routine(void *arg) {
+    if (unlikely(arg == NULL)) {
+        pthread_exit(0);
+    }
     partition* data = (partition*) arg;
 
     for(int i = 0; i < data->num; i++) {
         find_average_salary_in_node(data->nodes_pointer_array[i]);
     }
     free(data);
-    pthread_exit(0);
+    pthread_exit(EXIT_SUCCESS);
 }
 
-void find_average_salary_parallel(main_list_t* head) {
+int find_average_salary_parallel(main_list_t* head, long int proc_threads) {
+    if (head == NULL) {
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+    }
     main_list_t* q = head;
-    long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
+    long int NUM_THREADS = proc_threads;
 
     int nodes = count_nodes(head);
     pthread_t threadIds[NUM_THREADS];
@@ -40,18 +46,33 @@ void find_average_salary_parallel(main_list_t* head) {
     }
 
     for (int i = 0; i < NUM_THREADS; i++) {
-        pthread_create(&threadIds[i], NULL, thread_routine, (void*) data[i]);
+        int errflag = pthread_create(&threadIds[i], NULL, thread_routine, (void*) data[i]);
+        if (unlikely(errflag != 0)) {
+            for (; i < NUM_THREADS; ++i) {
+                free(data[i]);
+            }
+            return THREAD_ERROR;
+        }
     }
 
     for (int i = 0; i < NUM_THREADS; i++) {
-        pthread_join(threadIds[i], NULL);
+        int errflag = pthread_join(threadIds[i], NULL);
+        if (unlikely(errflag != 0)) {
+            free(nodes_pointer_array);
+            free(data);
+            return THREAD_ERROR;
+        }
     }
 
     free(nodes_pointer_array);
     free(data);
+    return NO_ERROR;
 }
 
 int find_average_salary_in_node(position_list_t* position) {
+    if (position == NULL) {
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+    }
 
     count_t* data_sort = NULL;
     data_sort = malloc(sizeof(data_t));
@@ -79,10 +100,13 @@ int find_average_salary_in_node(position_list_t* position) {
     }
     print_average_salary(data_sort);
     free(data_sort);
-    return 0;
+    return NO_ERROR;
 }
 
 int count_nodes(main_list_t* head) {
+    if (head == NULL) {
+        return NODES_ERROR;
+    }
     main_list_t* q = head;
     int i = 0;
     while(q != NULL) {
@@ -90,13 +114,4 @@ int count_nodes(main_list_t* head) {
         q = q->next_list;
     }
     return i;
-}
-
-int print_average_salary(count_t* data) {
-    if (data == NULL) {
-        return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
-    }
-    return printf("------------------------------------------------------------------\n"
-    "For %s with %hi years of experience average salary is: %u\n", 
-    data->position, data->experience, data->sum_salary/data->num_of_workers);
 }

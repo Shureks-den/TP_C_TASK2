@@ -51,8 +51,12 @@ enum error_list {
     ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL = 7,
     ERROR_IN_DELETING_LIST_STRUCTURE = 8,
     SNPRINTF_ERROR = 9,
+    NODES_ERROR = 10,
+    THREAD_ERROR = 11
 };
 
 worker_t* gather_info(const char source[], size_t* size);  // функция чтобы загрузить это чудо в память
 int print_info(worker_t* workers, size_t* size);  // печать общей инфы(для дебага)
+
+int print_average_salary(count_t* data); // печать итоговой информации
 

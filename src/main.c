@@ -24,8 +24,15 @@ int main(int argc, char* argv[]) {
     for(size_t i = 0; i < size; i++) {
         head = add_elem_to_main_structure(workers[i], head);
     }
+
+    long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
+    if (NUM_THREADS < 2) {
+        puts("Your computer doesn't support multithread. Using none-parallel algorythm");
+        find_average_salary(head); 
+    }
+
     if (strcmp(argv[2], "1") == 0)
-    find_average_salary_parallel(head);
+    find_average_salary_parallel(head, NUM_THREADS);
     if (strcmp(argv[2], "2") == 0)
     find_average_salary(head); 
 

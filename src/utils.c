@@ -52,3 +52,11 @@ int print_info(worker_t* workers, size_t* size) {
     return NO_ERROR;
 }
 
+int print_average_salary(count_t* data) {
+    if (data == NULL) {
+        return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
+    }
+    return printf("------------------------------------------------------------------\n"
+    "For %s with %hi years of experience average salary is: %u\n", 
+    data->position, data->experience, data->sum_salary/data->num_of_workers);
+}
