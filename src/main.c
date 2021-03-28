@@ -1,7 +1,7 @@
-#include "../include/utils.h"
-#include "../include/sort_data.h"
-#include "../include/find_average_salary.h"
-#include "../include/find_average_salary_par.h"
+#include "utils.h"
+#include "sort_data.h"
+#include "find_average_salary.h"
+#include "find_average_salary_par.h"
 
 #include <stdlib.h>
 
@@ -25,16 +25,12 @@ int main(int argc, char* argv[]) {
         head = add_elem_to_main_structure(workers[i], head);
     }
 
-    long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
-    if (NUM_THREADS < 2) {
-        puts("Your computer doesn't support multithread. Using none-parallel algorythm");
-        find_average_salary(head); 
+    int error = find_average_salary(head);
+    if (error) {
+        clear_position_structure(head);
+        free(workers);
+        return error;
     }
-
-    if (strcmp(argv[2], "1") == 0)
-    find_average_salary_parallel(head, NUM_THREADS);
-    if (strcmp(argv[2], "2") == 0)
-    find_average_salary(head); 
 
     clear_position_structure(head);
     free(workers);  // по логике она наверно в памяти должна оставаться

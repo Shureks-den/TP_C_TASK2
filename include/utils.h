@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#define BIGCOMPANY 10000  // ориентировочная цифра
-#define GROW 1000  // коэффициент для realloc
+#define BIGCOMPANY 100000  // ориентировочная цифра
+#define GROW 10000  // коэффициент для realloc
+#define INFO_FOR_REPORT 3
 
 typedef struct count {
     unsigned int sum_salary;

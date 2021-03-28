@@ -3,7 +3,7 @@ For headmanager with 2 years of experience average salary is: 38000
 ------------------------------------------------------------------
 For headmanager with 6 years of experience average salary is: 45000
 ------------------------------------------------------------------
-For headmanager with 8 years of experience average salary is: 37857
+For headmanager with 8 years of experience average salary is: 37682
 ------------------------------------------------------------------
 For headmanager with 10 years of experience average salary is: 56000
 ------------------------------------------------------------------

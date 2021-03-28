@@ -1,4 +1,4 @@
-#include "../include/find_average_salary.h"
+#include "find_average_salary.h"
 
 int find_average_salary(main_list_t* head) {
     if (head == NULL) {
@@ -21,7 +21,7 @@ int find_average_salary(main_list_t* head) {
 
         while (p != NULL) {
             if (data_sort->experience != p->data.experience) {
-                if (print_average_salary(data_sort) < 3) {
+                if (print_average_salary(data_sort) < INFO_FOR_REPORT) {
                     free(data_sort);
                     return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
                 }

@@ -2,9 +2,9 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-    #include "../include/utils.h"
-    #include "../include/sort_data.h"
-    #include "../include/find_average_salary_par.h"
+    #include "utils.h"
+    #include "sort_data.h"
+    #include "find_average_salary_par.h"
 }
 
 TEST(finding_average_salary, test_salary) {
@@ -20,7 +20,7 @@ TEST(finding_average_salary, test_salary) {
         head = add_elem_to_main_structure(workers[i], head);
     }
 
-    ASSERT_EQ(find_average_salary_parallel(head, sysconf(_SC_NPROCESSORS_ONLN)), NO_ERROR);
+    ASSERT_EQ(find_average_salary(head), NO_ERROR);
 
     position_list_t* position = NULL;
     ASSERT_EQ(find_average_salary_in_node(position), ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL);
@@ -28,7 +28,7 @@ TEST(finding_average_salary, test_salary) {
 
     clear_position_structure(head);
     head = NULL;
-    ASSERT_EQ(find_average_salary_parallel(head, sysconf(_SC_NPROCESSORS_ONLN)), ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL);
+    ASSERT_EQ(find_average_salary(head), ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL);
     ASSERT_EQ(count_nodes(head), NODES_ERROR);
 
     clear_position_structure(head);

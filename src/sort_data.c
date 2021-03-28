@@ -1,4 +1,4 @@
-#include "../include/sort_data.h"
+#include "sort_data.h"
 
 main_list_t* add_elem_to_main_structure(worker_t element, main_list_t* head) {
     if (head == NULL) {

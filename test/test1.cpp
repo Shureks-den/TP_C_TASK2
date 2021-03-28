@@ -3,7 +3,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-    #include "../include/utils.h"
+    #include "utils.h"
 }
 
 TEST(utils_functions_test, test_reading_from_file) {  // проверка чтения файлов, в том числе не сушествующих

@@ -1,4 +1,4 @@
-#include "../include/utils.h"
+#include "utils.h"
 #include <stdbool.h>
 
 worker_t* gather_info(const char source[], size_t* size) {
@@ -30,8 +30,8 @@ worker_t* gather_info(const char source[], size_t* size) {
                 fclose(database);
                 return NULL;
             }
-        company_size += GROW;
-        workers = tmp;
+            company_size += GROW;
+            workers = tmp;
         }
     }
     *size = i;

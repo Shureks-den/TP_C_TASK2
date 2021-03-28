@@ -1,4 +1,4 @@
-#include "../include/find_average_salary_par.h"
+#include "find_average_salary_par.h"
 
 #define unlikely(expr) __builtin_expect(!!(expr), 0)
 #define likely(expr) __builtin_expect(!!(expr), 1)
@@ -9,33 +9,40 @@ void* thread_routine(void *arg) {
     }
     partition* data = (partition*) arg;
 
-    for(int i = 0; i < data->num; i++) {
+    for(size_t i = 0; i < data->num; i++) {
         find_average_salary_in_node(data->nodes_pointer_array[i]);
     }
     free(data);
     pthread_exit(EXIT_SUCCESS);
 }
 
-int find_average_salary_parallel(main_list_t* head, long int proc_threads) {
+int find_average_salary(main_list_t* head) {
     if (head == NULL) {
         return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
     }
     main_list_t* q = head;
-    long int NUM_THREADS = proc_threads;
+    long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
 
     int nodes = count_nodes(head);
     pthread_t threadIds[NUM_THREADS];
 
     position_list_t** nodes_pointer_array = malloc(sizeof(position_list_t*) * (nodes));  // максимальное количество в одном потоке
-    for (int i = 0; i < nodes; i++) {
+    if (nodes_pointer_array == NULL) {
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+    }
+
+    for (size_t i = 0; i < nodes; i++) {
         nodes_pointer_array[i] = q->head;
         q = q->next_list;
     }
 
     partition** data = malloc(sizeof(partition*) * NUM_THREADS);
+    if (data == NULL) {
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+    }
     int info_per_thread = nodes / NUM_THREADS;
 
-    for (int i = 0; i < NUM_THREADS; i++) {
+    for (size_t i = 0; i < NUM_THREADS; i++) {
         data[i] = malloc(sizeof(partition));
         data[i]->num = info_per_thread;
         data[i]->nodes_pointer_array = nodes_pointer_array + i * info_per_thread;
@@ -45,7 +52,7 @@ int find_average_salary_parallel(main_list_t* head, long int proc_threads) {
         } 
     }
 
-    for (int i = 0; i < NUM_THREADS; i++) {
+    for (size_t i = 0; i < NUM_THREADS; i++) {
         int errflag = pthread_create(&threadIds[i], NULL, thread_routine, (void*) data[i]);
         if (unlikely(errflag != 0)) {
             for (; i < NUM_THREADS; ++i) {
@@ -55,7 +62,7 @@ int find_average_salary_parallel(main_list_t* head, long int proc_threads) {
         }
     }
 
-    for (int i = 0; i < NUM_THREADS; i++) {
+    for (size_t i = 0; i < NUM_THREADS; i++) {
         int errflag = pthread_join(threadIds[i], NULL);
         if (unlikely(errflag != 0)) {
             free(nodes_pointer_array);
@@ -76,6 +83,9 @@ int find_average_salary_in_node(position_list_t* position) {
 
     count_t* data_sort = NULL;
     data_sort = malloc(sizeof(data_t));
+    if (data_sort == NULL) {
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+    }
 
     data_sort->experience = position->data.experience;
     data_sort->sum_salary = 0;
@@ -86,7 +96,7 @@ int find_average_salary_in_node(position_list_t* position) {
     }
     while (position != NULL) {
         if (data_sort->experience != position->data.experience) {
-            if (unlikely(print_average_salary(data_sort) < 3)) {
+            if (unlikely(print_average_salary(data_sort) < INFO_FOR_REPORT)) {
                 return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
             }
             data_sort->num_of_workers = 0;

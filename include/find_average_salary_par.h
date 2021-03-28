@@ -15,6 +15,6 @@ typedef struct {
 } partition;
 
 void* thread_routine(void *arg);
-int find_average_salary_parallel(main_list_t* head, long int proc_threads);
+int find_average_salary(main_list_t* head);
 int find_average_salary_in_node(position_list_t* position);
 int count_nodes(main_list_t* head);

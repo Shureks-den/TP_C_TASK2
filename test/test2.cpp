@@ -2,8 +2,8 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-    #include "../include/utils.h"
-    #include "../include/sort_data.h"
+    #include "utils.h"
+    #include "sort_data.h"
 }
 
 TEST(forming_a_structure, making_a_list) {

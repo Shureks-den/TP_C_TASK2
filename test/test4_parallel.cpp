@@ -2,9 +2,9 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-    #include "../include/utils.h"
-    #include "../include/sort_data.h"
-    #include "../include/find_average_salary_par.h"
+    #include "utils.h"
+    #include "sort_data.h"
+    #include "find_average_salary_par.h"
 }
 
 TEST(finding_average_salary, test_salary) {
@@ -20,7 +20,7 @@ TEST(finding_average_salary, test_salary) {
         head = add_elem_to_main_structure(workers[i], head);
     }
 
-    find_average_salary_parallel(head, sysconf(_SC_NPROCESSORS_ONLN));
+    find_average_salary(head);
 
     clear_position_structure(head);
     free(workers);

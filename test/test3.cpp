@@ -2,9 +2,9 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-    #include "../include/utils.h"
-    #include "../include/sort_data.h"
-    #include "../include/find_average_salary.h"
+    #include "utils.h"
+    #include "sort_data.h"
+    #include "find_average_salary.h"
 }
 
 TEST(finding_average_salary, test_salary) {
