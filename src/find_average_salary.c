@@ -7,6 +7,9 @@ int find_average_salary(main_list_t* head) {
     main_list_t* q = head;
     count_t* data_sort = NULL;
     data_sort = malloc(sizeof(data_t));
+    if (data_sort == NULL) {
+        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+    }
 
     while (q != NULL) {
         position_list_t* p = q->head;
