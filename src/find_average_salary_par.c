@@ -153,6 +153,8 @@ count_t*  find_average_salary(main_list_t* const head, size_t* size) {
             for (; i < NUM_THREADS; ++i) {
                 clear_mem(data[i]);
             }
+            free(nodes_pointer_array);
+            free(data);
             return NULL;
         }
     }
@@ -160,7 +162,9 @@ count_t*  find_average_salary(main_list_t* const head, size_t* size) {
     for (size_t i = 0; i < NUM_THREADS; i++) {
         int errflag = pthread_join(threadIds[i], NULL);
         if (unlikely(errflag != 0)) {
-            clear_mem(data[i]);
+            for (; i < NUM_THREADS; ++i) {
+                clear_mem(data[i]);
+            }
             free(nodes_pointer_array);
             free(data);
             return NULL;
