@@ -48,13 +48,12 @@ jobs:
       - name: Check Multithread prog
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
-        run: ./prog_par workers.txt
+        run: time ./prog_par workers_BIG.txt
 
       - name: Check liniear prog
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
-        run: ./prog_lin workers.txt
-
+        run: time ./prog_lin workers_BIG.txt
 
       - name: Test
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
