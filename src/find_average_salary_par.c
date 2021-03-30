@@ -119,21 +119,30 @@ count_t*  find_average_salary(main_list_t* const head, size_t* size) {
 
     for (size_t i = 0; i < NUM_THREADS; i++) {
         data[i] = malloc(sizeof(partition));
-        if (data[i] == NULL) {
+        if (unlikely(data[i] == NULL)) {
+            for (size_t j = 0; j < i; j++) {
+                clear_mem(data[j]);
+            }
             free(nodes_pointer_array);
             free(data);
             return NULL;
         }
         data[i]->data_sort = malloc(sizeof(data_t*)*(MAX_EXPERIENCE));
-        if (data[i]->data_sort == NULL) {
+        if (unlikely(data[i]->data_sort == NULL)) {
             free(nodes_pointer_array);
+            for (size_t j = 0; j < i; j++) {
+                clear_mem(data[j]);
+            }
             free(data[i]);
             free(data);
             return NULL;
         }
         data[i]->data_size = malloc(sizeof(size_t)*MAX_EXPERIENCE);
-        if (data[i]->data_size == NULL) {
+        if (unlikely(data[i]->data_size == NULL)) {
             free(nodes_pointer_array);
+            for (size_t j = 0; j < i; j++) {
+                clear_mem(data[j]);
+            }
             free(data[i]->data_sort);
             free(data[i]);
             free(data);
