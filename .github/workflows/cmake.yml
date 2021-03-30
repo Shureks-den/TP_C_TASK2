@@ -24,10 +24,6 @@ jobs:
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: mkdir build
 
-      - name: check content
-        working-directory: ${{runner.workspace}}/TP_C_TASK2
-        shell: bash
-        run: ls
 
       - name: Build cmake
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
@@ -52,12 +48,12 @@ jobs:
       - name: Check Multithread prog
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
-        run: ./prog_par workers_BIG.txt
+        run: ./prog_par workers.txt
 
       - name: Check liniear prog
         working-directory: ${{runner.workspace}}/TP_C_TASK2/build
         shell: bash
-        run: ./prog_lin workers_BIG.txt
+        run: ./prog_lin workers.txt
 
 
       - name: Test

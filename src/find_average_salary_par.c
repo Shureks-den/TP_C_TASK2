@@ -64,6 +64,12 @@ static void* thread_routine(void* arg) {
     pthread_exit(0);
 }
 
+static void clear_mem(partition* data) {
+    free(data->data_sort);
+    free(data->data_size);
+    free(data);
+}
+
 static count_t* merge_data_together(partition** data, int nodes, size_t* size) {  //  функция склеивания данные для отчета
     count_t* data_sort = NULL;
     long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
@@ -77,9 +83,7 @@ static count_t* merge_data_together(partition** data, int nodes, size_t* size) {
             move += data[i]->data_size[j];
             free(data[i]->data_sort[j]);
         }
-        free(data[i]->data_sort);
-        free(data[i]->data_size);
-        free(data[i]);
+        clear_mem(data[i]);
     }
 
     *size = move;
@@ -108,14 +112,33 @@ count_t*  find_average_salary(main_list_t* const head, size_t* size) {
 
     partition** data = malloc(sizeof(partition*) * NUM_THREADS);
     if (data == NULL) {
+        free(nodes_pointer_array);
         return NULL;
     }
     int info_per_thread = nodes / NUM_THREADS;
 
     for (size_t i = 0; i < NUM_THREADS; i++) {
         data[i] = malloc(sizeof(partition));
+        if (data[i] == NULL) {
+            free(nodes_pointer_array);
+            free(data);
+            return NULL;
+        }
         data[i]->data_sort = malloc(sizeof(data_t*)*(MAX_EXPERIENCE));
+        if (data[i]->data_sort == NULL) {
+            free(nodes_pointer_array);
+            free(data[i]);
+            free(data);
+            return NULL;
+        }
         data[i]->data_size = malloc(sizeof(size_t)*MAX_EXPERIENCE);
+        if (data[i]->data_size == NULL) {
+            free(nodes_pointer_array);
+            free(data[i]->data_sort);
+            free(data[i]);
+            free(data);
+            return NULL;
+        }
         data[i]->num = info_per_thread;
         data[i]->nodes_pointer_array = nodes_pointer_array + i * info_per_thread;
 
@@ -128,7 +151,7 @@ count_t*  find_average_salary(main_list_t* const head, size_t* size) {
         int errflag = pthread_create(&threadIds[i], NULL, thread_routine, (void*) data[i]);
         if (unlikely(errflag != 0)) {
             for (; i < NUM_THREADS; ++i) {
-                free(data[i]);
+                clear_mem(data[i]);
             }
             return NULL;
         }
@@ -137,6 +160,7 @@ count_t*  find_average_salary(main_list_t* const head, size_t* size) {
     for (size_t i = 0; i < NUM_THREADS; i++) {
         int errflag = pthread_join(threadIds[i], NULL);
         if (unlikely(errflag != 0)) {
+            clear_mem(data[i]);
             free(nodes_pointer_array);
             free(data);
             return NULL;
