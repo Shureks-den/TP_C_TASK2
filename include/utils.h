@@ -4,6 +4,7 @@
 #include <string.h>
 #define BIGCOMPANY 100000  // ориентировочная цифра
 #define GROW 10000  // коэффициент для realloc
+#define MAX_EXPERIENCE 65  //  максимальная выборка для стажа от 0 до 65  
 #define INFO_FOR_REPORT 3
 
 typedef struct count {
@@ -59,5 +60,5 @@ enum error_list {
 worker_t* gather_info(const char source[], size_t* size);  // функция чтобы загрузить это чудо в память
 int print_info(worker_t* const workers, size_t* const size);  // печать общей инфы(для дебага)
 
-int print_average_salary(count_t* const data); // печать итоговой информации
+int print_average_salary(count_t* const data, size_t* const data_size); // печать итоговой информации
 int count_nodes(main_list_t* const head);

@@ -19,14 +19,15 @@ TEST(finding_average_salary, test_salary) {
         head = add_elem_to_main_structure(workers + i, head);
     }
 
-    ASSERT_EQ(find_average_salary(head), NO_ERROR);
+    size_t i = 0;
+    ASSERT_NE(find_average_salary(head, &i), nullptr);
 
     position_list_t* position = NULL;
 
 
     clear_position_structure(head);
     head = NULL;
-    ASSERT_EQ(find_average_salary(head), ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL);
+    ASSERT_EQ(find_average_salary(head, &i), nullptr);
 
     clear_position_structure(head);
     free(workers);

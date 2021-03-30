@@ -23,18 +23,18 @@ TEST(utils_functions_test, test_reading_from_file) {  // проверка чте
     workers = gather_info(new_filename, &size);
 
     std::ifstream base("../../workers_BIG.txt");  // проверка работы size и realloc
-    int i = 0;
+    int num_data_in_files = 0;
     char *str = new char [1024];
 
     while (!base.eof()) {
         base.getline(str, 1024, '\n');
-        i++;
+        num_data_in_files++;
     }
     delete str;
     base.close();
 
     ASSERT_NE(workers, nullptr);
-    ASSERT_EQ(size, i);  //  проверка, что количество считываний == количеству данных в структуре
+    ASSERT_EQ(size, num_data_in_files);  //  проверка, что количество считываний == количеству данных в структуре
     free(workers);
 }
 

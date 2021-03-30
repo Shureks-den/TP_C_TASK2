@@ -53,13 +53,17 @@ int print_info(worker_t* const workers, size_t* const size) {
     return NO_ERROR;
 }
 
-int print_average_salary(count_t* const data) {
-    if (data == NULL) {
+int print_average_salary(count_t* const data, size_t* const data_size) {
+    if (data == NULL || data_size == NULL) {
         return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
     }
-    return printf("------------------------------------------------------------------\n"
-    "For %s with %hi years of experience average salary is: %u\n", 
-    data->position, data->experience, data->sum_salary/data->num_of_workers);
+    
+    for (size_t i = 0; i < *data_size; ++i) {
+        printf("------------------------------------------------------------------\n"
+            "For %s with %hi years of experience average salary is: %u\n", 
+            data[i].position, data[i].experience, data[i].sum_salary/data[i].num_of_workers);
+    }
+    return NO_ERROR;
 }
 
 int count_nodes(main_list_t* const head) {

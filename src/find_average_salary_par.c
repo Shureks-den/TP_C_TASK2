@@ -4,45 +4,52 @@
 #define likely(expr) __builtin_expect(!!(expr), 1)
 
 typedef struct {
-    position_list_t** nodes_pointer_array;
-    int num;
+    position_list_t** nodes_pointer_array;  //  неотсортированные ноды
+    int num;  //  сколько в поток передается нодов
+    size_t *data_size;  //  массив количества стажей
+    count_t** data_sort;  //  указатель на массив массивов отсортированных структур
 } partition;
 
-static int find_average_salary_in_node(position_list_t* position) {
+static count_t* find_average_salary_in_node(position_list_t* position, size_t* data_size) {
     if (position == NULL) {
-        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+        return NULL;
     }
 
     count_t* data_sort = NULL;
-    data_sort = malloc(sizeof(data_t));
+    data_sort = malloc(sizeof(count_t) * MAX_EXPERIENCE);
+
     if (data_sort == NULL) {
-        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+        return NULL;
+    }
+    size_t i = 0;
+
+    data_sort[i].experience = position->data.experience;
+    data_sort[i].sum_salary = 0;
+    data_sort[i].num_of_workers = 0;
+    if (unlikely(snprintf(data_sort[i].position, sizeof(data_sort[i].position), "%s", position->data.position) < 1)) {
+        free(data_sort);
+        return NULL;
     }
 
-    data_sort->experience = position->data.experience;
-    data_sort->sum_salary = 0;
-    data_sort->num_of_workers = 0;
-    if (unlikely(snprintf(data_sort->position, sizeof(data_sort->position), "%s", position->data.position) < 1)) {
-        free(data_sort);
-        return SNPRINTF_ERROR;
-    }
     while (position != NULL) {
-        if (data_sort->experience != position->data.experience) {
-            if (unlikely(print_average_salary(data_sort) < INFO_FOR_REPORT)) {
-                return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+        if (data_sort[i].experience != position->data.experience) {
+            i++;
+            data_sort[i].num_of_workers = 0;
+            data_sort[i].sum_salary = 0;
+            data_sort[i].experience = position->data.experience;
+            if (unlikely(snprintf(data_sort[i].position, sizeof(data_sort[i].position), "%s", position->data.position) < 1)) {
+                free(data_sort);
+                return NULL;
             }
-            data_sort->num_of_workers = 0;
-            data_sort->sum_salary = 0;
-            data_sort->experience = position->data.experience;
         }
-        data_sort->sum_salary += position->data.salary;
-        data_sort->num_of_workers ++;
+
+        data_sort[i].sum_salary += position->data.salary;
+        data_sort[i].num_of_workers++;
         position = position->next;
-            
     }
-    print_average_salary(data_sort);
-    free(data_sort);
-    return NO_ERROR;
+    i++;
+    *data_size = i;
+    return data_sort;  // возвращаем указатель на массив
 }
 
 static void* thread_routine(void* arg) {
@@ -52,15 +59,36 @@ static void* thread_routine(void* arg) {
     partition* data = (partition*) arg;
 
     for(size_t i = 0; i < data->num; i++) {
-        find_average_salary_in_node(data->nodes_pointer_array[i]);
+        data->data_sort[i] = find_average_salary_in_node(data->nodes_pointer_array[i], &data->data_size[i]);
     }
-    free(data);
-    pthread_exit(EXIT_SUCCESS);
+    pthread_exit(0);
 }
 
-int find_average_salary(main_list_t* const head) {
+static count_t* merge_data_together(partition** data, int nodes, size_t* size) {  //  функция склеивания данные для отчета
+    count_t* data_sort = NULL;
+    long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
+
+    data_sort = malloc(sizeof(count_t) * nodes * MAX_EXPERIENCE);
+
+    size_t move = 0;
+    for (size_t i = 0; i < NUM_THREADS; i++) {
+        for (size_t j = 0; j < data[i]->num; j++) {
+            memcpy(data_sort + move, data[i]->data_sort[j], sizeof(count_t) * data[i]->data_size[j]);
+            move += data[i]->data_size[j];
+            free(data[i]->data_sort[j]);
+        }
+        free(data[i]->data_sort);
+        free(data[i]->data_size);
+        free(data[i]);
+    }
+
+    *size = move;
+    return data_sort;
+}
+
+count_t*  find_average_salary(main_list_t* const head, size_t* size) {
     if (head == NULL) {
-        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+        return NULL;
     }
     main_list_t* q = head;
     long int NUM_THREADS = sysconf(_SC_NPROCESSORS_ONLN);
@@ -70,7 +98,7 @@ int find_average_salary(main_list_t* const head) {
 
     position_list_t** nodes_pointer_array = malloc(sizeof(position_list_t*) * (nodes));  // максимальное количество в одном потоке
     if (nodes_pointer_array == NULL) {
-        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+        return NULL;
     }
 
     for (size_t i = 0; i < nodes; i++) {
@@ -80,12 +108,14 @@ int find_average_salary(main_list_t* const head) {
 
     partition** data = malloc(sizeof(partition*) * NUM_THREADS);
     if (data == NULL) {
-        return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
+        return NULL;
     }
     int info_per_thread = nodes / NUM_THREADS;
 
     for (size_t i = 0; i < NUM_THREADS; i++) {
         data[i] = malloc(sizeof(partition));
+        data[i]->data_sort = malloc(sizeof(data_t*)*(MAX_EXPERIENCE));
+        data[i]->data_size = malloc(sizeof(size_t)*MAX_EXPERIENCE);
         data[i]->num = info_per_thread;
         data[i]->nodes_pointer_array = nodes_pointer_array + i * info_per_thread;
 
@@ -100,7 +130,7 @@ int find_average_salary(main_list_t* const head) {
             for (; i < NUM_THREADS; ++i) {
                 free(data[i]);
             }
-            return THREAD_ERROR;
+            return NULL;
         }
     }
 
@@ -109,13 +139,15 @@ int find_average_salary(main_list_t* const head) {
         if (unlikely(errflag != 0)) {
             free(nodes_pointer_array);
             free(data);
-            return THREAD_ERROR;
+            return NULL;
         }
     }
-
+    
+    count_t* data_sort = merge_data_together(data, nodes, size);
     free(nodes_pointer_array);
     free(data);
-    return NO_ERROR;
+    return data_sort;
 }
+
 
 
