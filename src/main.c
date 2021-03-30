@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     main_list_t * head = NULL;
 
     for(size_t i = 0; i < size; i++) {
-        head = add_elem_to_main_structure(workers[i], head);
+        head = add_elem_to_main_structure(workers + i, head);
     }
 
     int error = find_average_salary(head);

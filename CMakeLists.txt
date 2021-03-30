@@ -24,7 +24,7 @@ add_library(Static_onethreaded STATIC ${PROJECT_SOURCE_DIR}/src/find_average_sal
 ${PROJECT_SOURCE_DIR}/src/sort_data.c ${PROJECT_SOURCE_DIR}/src/utils.c)
 
 add_library(multi_thread SHARED ${PROJECT_SOURCE_DIR}/src/find_average_salary_par.c 
-${PROJECT_SOURCE_DIR}/src/utils.c ${PROJECT_SOURCE_DIR}/src/sort_data.c)
+${PROJECT_SOURCE_DIR}/src/sort_data.c ${PROJECT_SOURCE_DIR}/src/utils.c )
 
 add_executable(prog_lin ${PROJECT_SOURCE_DIR}/src/main.c)
 target_link_libraries(prog_lin Static_onethreaded)

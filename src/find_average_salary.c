@@ -1,6 +1,6 @@
 #include "find_average_salary.h"
 
-int find_average_salary(main_list_t* head) {
+int find_average_salary(main_list_t* const head) {
     if (head == NULL) {
         return ERROR_IN_BUILDING_AVERAGE_SALARY_MODEL;
     }

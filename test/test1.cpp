@@ -34,7 +34,7 @@ TEST(utils_functions_test, test_reading_from_file) {  // проверка чте
     base.close();
 
     ASSERT_NE(workers, nullptr);
-    ASSERT_EQ(size, i);
+    ASSERT_EQ(size, i);  //  проверка, что количество считываний == количеству данных в структуре
     free(workers);
 }
 

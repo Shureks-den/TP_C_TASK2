@@ -20,7 +20,8 @@ worker_t* gather_info(const char source[], size_t* size) {
         return NULL;
     }
 
-    while (fscanf(database, "%18s%19s%6s%hd%u%25s%hd", workers[i].name, workers[i].surname, workers[i].gender, &workers[i].age, &workers[i].salary, workers[i].position, &workers[i].experience) > 0) {
+    while (fscanf(database, "%18s%19s%6s%hd%u%25s%hd", workers[i].name, workers[i].surname, workers[i].gender, 
+        &workers[i].age, &workers[i].salary, workers[i].position, &workers[i].experience) > 0) {
         i++;
 
         if (i == company_size) {
@@ -39,7 +40,7 @@ worker_t* gather_info(const char source[], size_t* size) {
     return workers;
 }
 
-int print_info(worker_t* workers, size_t* size) {
+int print_info(worker_t* const workers, size_t* const size) {
     if (workers == NULL || size == NULL) {
         return CANNOT_PRINT_INFO_FROM_ARRAY;
     }
@@ -52,11 +53,24 @@ int print_info(worker_t* workers, size_t* size) {
     return NO_ERROR;
 }
 
-int print_average_salary(count_t* data) {
+int print_average_salary(count_t* const data) {
     if (data == NULL) {
         return CANNOT_PRINT_INFO_FROM_LIST_STRUCTURE;
     }
     return printf("------------------------------------------------------------------\n"
     "For %s with %hi years of experience average salary is: %u\n", 
     data->position, data->experience, data->sum_salary/data->num_of_workers);
+}
+
+int count_nodes(main_list_t* const head) {
+    if (head == NULL) {
+        return NODES_ERROR;
+    }
+    main_list_t* q = head;
+    int i = 0;
+    while(q != NULL) {
+        i++;
+        q = q->next_list;
+    }
+    return i;
 }

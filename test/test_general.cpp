@@ -17,7 +17,7 @@ TEST(finding_average_salary, test_salary) {
     main_list_t* head = NULL;
     
     for(size_t i = 0; i < size; ++i) {
-        head = add_elem_to_main_structure(workers[i], head);
+        head = add_elem_to_main_structure(workers + i, head);
     }
 
     FILE* stream = freopen("got.txt", "w", stdout);

@@ -57,7 +57,7 @@ enum error_list {
 };
 
 worker_t* gather_info(const char source[], size_t* size);  // функция чтобы загрузить это чудо в память
-int print_info(worker_t* workers, size_t* size);  // печать общей инфы(для дебага)
+int print_info(worker_t* const workers, size_t* const size);  // печать общей инфы(для дебага)
 
-int print_average_salary(count_t* data); // печать итоговой информации
-
+int print_average_salary(count_t* const data); // печать итоговой информации
+int count_nodes(main_list_t* const head);
